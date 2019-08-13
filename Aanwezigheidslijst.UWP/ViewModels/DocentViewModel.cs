@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace Aanwezigheidslijst.UWP.ViewModels
 {
-    public class DocentViewModel : BaseViewModel<ViewDocent>
+    public class DocentViewModel : BaseViewModel<ViewDocent> /// maken nieuw model aan voor 1 docent op te vragen (nodige voor de rest(zie of UWPMVVM)
     {
         public DocentViewModel(ViewDocent model) : base(model)
         {
 
         }
 
-        //sgsg
         public string Naam
         {
             get => Model.Naam;

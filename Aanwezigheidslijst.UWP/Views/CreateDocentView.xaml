@@ -6,10 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns: viewModels ="using:Aanwezigheidslijst.UWP.vieModels"
+    xmlns:viewModels="using:Aanwezigheidslijst.UWP.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <Grid>
+    
+    
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -17,10 +18,28 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
+        <StackPanel>
+        <TextBox HorizontalAlignment="Stretch" Margin="10" PlaceholderText="Naam" VerticalAlignment="Top"  Text="{x:Bind ViewModel.Naam, Mode=TwoWay}"/>
+            <TextBox HorizontalAlignment="Stretch" Margin="10" PlaceholderText="Bedrijf" Text="{x:Bind ViewModel.Bedrijf, Mode=TwoWay}"/>
+            <Button Content="Save" Margin="10" VerticalAlignment="Top" Command="{x:Bind ViewModel.SaveCommand}" />
+        </StackPanel>
             
-        <TextBox HorizontalAlignment="Left" Margin="80,88,0,0" PlaceholderText="Naam" VerticalAlignment="Top" Width="605" Text="{x:Bind ViewModel.Naam, Mode=TwoWay}"/>
-        <TextBox HorizontalAlignment="Left" Margin="80,148,0,0" PlaceholderText="Bedrijf"  VerticalAlignment="Top" Width="605" Text="{x:Bind ViewModel.Bedrijf, Mode=TwoWay}"/>
-        <Button Content="Save" Margin="80,206,0,0" VerticalAlignment="Top" Command="{x:Bind ViewModel.SaveCommand}" />
+            
+        <ScrollViewer Grid.Row="0" Grid.Column="1">
+            <StackPanel x:Name="ViewDocStackP">
+                <ListView ItemsSource="{ x:Bind ViewDocentView.Docenten, Mode=OneWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="viewModels:DocentViewModel">
+                            <StackPanel>
+                                <TextBlock x:Name="NaamDocTBlock" Text="{x:Bind Naam, Mode=TwoWay}"/>
+                                <TextBlock x:Name="BedrijfDocTBlock" Text="{x:Bind Bedrijf, Mode=TwoWay}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </ScrollViewer>
 
     </Grid>
 </Page>

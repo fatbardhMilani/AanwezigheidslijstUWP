@@ -121,14 +121,19 @@
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Models\CreateDocentModel.cs" />
+    <Compile Include="Models\DeleteDocentModel.cs" />
     <Compile Include="Models\ViewDocentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CreateDocentViewModel.cs" />
+    <Compile Include="ViewModels\DeleteDocentViewModel.cs" />
     <Compile Include="ViewModels\DocentViewModel.cs" />
     <Compile Include="ViewModels\ViewDocentViewModel.cs" />
     <Compile Include="Views\CreateDocentView.xaml.cs">
       <DependentUpon>CreateDocentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +166,10 @@
   <ItemGroup />
   <ItemGroup>
     <Page Include="Views\CreateDocentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

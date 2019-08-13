@@ -1,4 +1,4 @@
-﻿using Aanwezigheidslijst.EF.Model;
+﻿using Aanwezigheidslijst.ApplicationLogic;
 using Aanwezigheidslijst.UWP.Commands;
 using Aanwezigheidslijst.UWP.Models;
 using System;
@@ -11,11 +11,11 @@ using System.Windows.Input;
 
 namespace Aanwezigheidslijst.UWP.ViewModels
 {
-    public class ViewDocentViewModel : BaseViewModel<ViewDocentModel>
+    public class DeleteDocentViewModel : BaseViewModel<ViewDocentModel>
     {
         //public readonly ICommand ViewCommand;
         private ObservableCollection<DocentViewModel> _docenten;
-         
+
 
         public ViewDocentViewModel(ViewDocentModel model) : base(model)
         {
@@ -41,6 +41,6 @@ namespace Aanwezigheidslijst.UWP.ViewModels
             set => SetProperty(ref _docenten, value);
         }
 
-
     }
+
 }

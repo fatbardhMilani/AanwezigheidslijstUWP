@@ -35,11 +35,18 @@ namespace Aanwezigheidslijst.ApplicationLogic
                         Bedrijf = d.Bedrijf
                     }).ToList();
             }
-
-            
-
         }
 
+        public void Delete(DeleteDocent docent)
+        {
+            string vrwdrDoc = docent.ToString();
+
+            using (var ctx = new AanwezigheidslijstDbContext())
+            {
+                var doc = ctx.Docenten.SingleOrDefault(d => d.Naam == vrwdrDoc);
+                ctx.Docenten.Remove(doc);
+            }
+        }
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using Aanwezigheidslijst.UWP.Commands;
+﻿using Aanwezigheidslijst.ApplicationLogic;
+using Aanwezigheidslijst.UWP.Commands;
 using Aanwezigheidslijst.UWP.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace Aanwezigheidslijst.UWP.ViewModels
     public class CreateDocentViewModel : BaseViewModel<CreateDocentModel>
     {
         public readonly ICommand SaveCommand;
+        public DocentService DocentService { get; private set; }
 
         public CreateDocentViewModel() : base(new CreateDocentModel())
         {
