@@ -19,16 +19,20 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel>
-        <TextBox HorizontalAlignment="Stretch" Margin="10" PlaceholderText="Naam" VerticalAlignment="Top"  Text="{x:Bind ViewModel.Naam, Mode=TwoWay}"/>
-            <TextBox HorizontalAlignment="Stretch" Margin="10" PlaceholderText="Bedrijf" Text="{x:Bind ViewModel.Bedrijf, Mode=TwoWay}"/>
+        <StackPanel Grid.Row="0" Grid.Column="1">
+        <TextBox HorizontalAlignment="Stretch" Margin="10" PlaceholderText="Naam" VerticalAlignment="Top" 
+                 Text="{x:Bind ViewModel.Naam, Mode=TwoWay}"/>
+            <TextBox HorizontalAlignment="Stretch" Margin="10" PlaceholderText="Bedrijf" 
+                     Text="{x:Bind ViewModel.Bedrijf, Mode=TwoWay}"/>
             <Button Content="Save" Margin="10" VerticalAlignment="Top" Command="{x:Bind ViewModel.SaveCommand}" />
+            <Button x:Name="DeleteButton" Content="DELETE" HorizontalAlignment="Right" Command="{x:Bind ViewDocentView.RemoveDocentCommand}"/>
+            <Button x:Name="refresh" Content="Refresh" HorizontalAlignment="Center" Click="Refresh_Click" ToolTipService.ToolTip="Refreshes the list."/>
         </StackPanel>
             
             
-        <ScrollViewer Grid.Row="0" Grid.Column="1">
+        <ScrollViewer Grid.Row="0" Grid.Column="0">
             <StackPanel x:Name="ViewDocStackP">
-                <ListView ItemsSource="{ x:Bind ViewDocentView.Docenten, Mode=OneWay}">
+                <ListView ItemsSource="{ x:Bind ViewDocentView.Docenten, Mode=OneWay}" SelectedItem="{x:Bind ViewDocentView.SelectedDocent, Mode=TwoWay}">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="viewModels:DocentViewModel">
                             <StackPanel>

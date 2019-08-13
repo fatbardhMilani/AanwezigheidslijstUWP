@@ -23,6 +23,7 @@ namespace Aanwezigheidslijst.UWP.ViewModels
         private void Save()
         {
             Model.CreateDocent();
+            
         }
         //sgsg
         public string Naam

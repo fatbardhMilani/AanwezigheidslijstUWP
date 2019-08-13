@@ -13,9 +13,9 @@ namespace Aanwezigheidslijst.UWP.Models
         private readonly DocentService _docentService = new DocentService();
         public readonly DeleteDocent Docent = new DeleteDocent();
 
-        public void DeleteDocent()
+        public void DeleteDocent(int id)
         {
-            _docentService.Delete(Docent);
+            _docentService.Delete(id);
         }
     }
 }

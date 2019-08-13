@@ -15,7 +15,11 @@ namespace Aanwezigheidslijst.UWP.ViewModels
     {
         //public readonly ICommand ViewCommand;
         private ObservableCollection<DocentViewModel> _docenten;
-         
+
+        private DocentViewModel _selectedDocent;
+
+
+        public readonly RelayCommand RemoveDocentCommand;
 
         public ViewDocentViewModel(ViewDocentModel model) : base(model)
         {
@@ -25,22 +29,44 @@ namespace Aanwezigheidslijst.UWP.ViewModels
             {
                 var docViewModel = new DocentViewModel(item);
                 _docenten.Add(docViewModel);
+
+
+                this.RemoveDocentCommand = new RelayCommand(() => DeleteDocent());
             }
             //ViewCommand = new RelayCommand(() => View());
         }
 
-        //public string Naam
-        //{
-        //    get => Model.ViewDocenten.ToString();
+        private void MemberViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            _selectedDocent = sender as DocentViewModel;
+        }
 
-        //}
+        public DocentViewModel SelectedDocent
+        {
+            get => _selectedDocent;
+            set => SetProperty(ref _selectedDocent, value);
+        }
 
         public ObservableCollection<DocentViewModel> Docenten
         {
             get => _docenten;
             set => SetProperty(ref _docenten, value);
         }
+        private void DeleteDocent()
+        {
+            try
+            {
+                Model.DeleteDocent(SelectedDocent.Id);
+                Docenten.Remove(SelectedDocent);
+            }
+            catch (Exception)
+            {
+
+            }
+            
+        }
 
 
     }
 }
+

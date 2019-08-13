@@ -15,31 +15,54 @@ namespace Aanwezigheidslijst.UWP.ViewModels
     {
         //public readonly ICommand ViewCommand;
         private ObservableCollection<DocentViewModel> _docenten;
+        private DocentViewModel _selectedDocent;
 
 
-        public ViewDocentViewModel(ViewDocentModel model) : base(model)
+        public readonly RelayCommand RemoveDocentCommand;
+
+        public DeleteDocentViewModel(ViewDocentModel model) : base(model)
         {
             _docenten = new ObservableCollection<DocentViewModel>();
 
             foreach (var item in model.ViewDocenten)
             {
-                var docViewModel = new DocentViewModel(item);
-                _docenten.Add(docViewModel);
+                //var docViewModel = new DocentViewModel(item);
+                //this.RemoveDocentCommand = new RelayCommand(() => DeleteMember());
             }
-            //ViewCommand = new RelayCommand(() => View());
         }
 
-        //public string Naam
+        //public string Voornaam
         //{
-        //    get => Model.ViewDocenten.ToString();
+        //    get => Model.ViewDocenten;
+        //    set
+        //    {
+        //        SetProperty(Model.Voornaam, value, () => { Model.Voornaam = value; RaisePropertyChanged(nameof(FullName)); });
 
+        //    }
         //}
+
+
+        private void MemberViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            _selectedDocent = sender as DocentViewModel;
+        }
 
         public ObservableCollection<DocentViewModel> Docenten
         {
             get => _docenten;
             set => SetProperty(ref _docenten, value);
         }
+        public DocentViewModel SelectedDocent
+        {
+            get => _selectedDocent;
+            set => SetProperty(ref _selectedDocent, value);
+        }
+
+        //private void DeleteMember()
+        //{
+        //    Model.DeleteDocent()
+        //    Docenten.Remove(SelectedDocent);
+        //}
 
     }
 

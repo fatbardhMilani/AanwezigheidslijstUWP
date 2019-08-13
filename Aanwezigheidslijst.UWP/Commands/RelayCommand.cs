@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Aanwezigheidslijst.UWP.Commands
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
 
         private Action _execute;

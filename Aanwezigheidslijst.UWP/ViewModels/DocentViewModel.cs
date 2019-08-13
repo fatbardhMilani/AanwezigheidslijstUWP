@@ -13,19 +13,31 @@ namespace Aanwezigheidslijst.UWP.ViewModels
         {
 
         }
-
+        public int Id
+        {   get => Model.Id;
+            set => SetProperty(Model.Id, value, () => Model.Id = value);
+        }
+        
         public string Naam
         {
             get => Model.Naam;
-            set => SetProperty(Model.Naam, value, () => Model.Naam = value);
-
+            set
+            {
+                SetProperty(Model.Naam, value, () => { Model.Naam = value; RaisePropertyChanged(nameof(Naam)); });
+            }
         }
+
+        
 
         public string Bedrijf
         {
             get => Model.Bedrijf;
-            set => SetProperty(Model.Bedrijf, value, () => Model.Bedrijf = value);
-
+            set
+            {
+                SetProperty(Model.Bedrijf, value, () => { Model.Bedrijf = value; RaisePropertyChanged(nameof(Bedrijf)); });
+            }
         }
+
+        
     }
 }

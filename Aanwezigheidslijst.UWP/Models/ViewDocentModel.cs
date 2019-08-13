@@ -17,6 +17,10 @@ namespace Aanwezigheidslijst.UWP.Models
         {
             ViewDocenten = _docentService.Read();
         }
+        public void DeleteDocent(int id)
+        {
+            _docentService.Delete(id);
+        }
 
     }
 }

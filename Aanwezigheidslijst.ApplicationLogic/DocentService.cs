@@ -37,14 +37,15 @@ namespace Aanwezigheidslijst.ApplicationLogic
             }
         }
 
-        public void Delete(DeleteDocent docent)
+        public void Delete(int id)
         {
-            string vrwdrDoc = docent.ToString();
 
             using (var ctx = new AanwezigheidslijstDbContext())
             {
-                var doc = ctx.Docenten.SingleOrDefault(d => d.Naam == vrwdrDoc);
-                ctx.Docenten.Remove(doc);
+                var doc = new Docent() { Id = id };
+                ctx.Attach(doc);
+                ctx.Remove(doc);
+                ctx.SaveChanges();
             }
         }
 

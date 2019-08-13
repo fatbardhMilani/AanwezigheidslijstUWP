@@ -1,4 +1,5 @@
-﻿using Aanwezigheidslijst.UWP.ViewModels;
+﻿using Aanwezigheidslijst.UWP.Models;
+using Aanwezigheidslijst.UWP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,6 +31,13 @@ namespace Aanwezigheidslijst.UWP.Views
             this.InitializeComponent();
             ViewModel = new CreateDocentViewModel();
             ViewDocentView = new ViewDocentViewModel(new Models.ViewDocentModel());
+            ViewDocentModel docentModel = new ViewDocentModel();
+            ViewDocentView = new ViewDocentViewModel(docentModel);
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CreateDocentView));
         }
     }
 }
